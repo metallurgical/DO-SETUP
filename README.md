@@ -190,24 +190,25 @@ server {
   - Go to our site dir : `cd /usr/share/nginx/html`
   - Listing all the file with privilege shown : `ls -l ` and we can see below output from console :
   
-```php
-total 8
--rw-r--r-- 1 root root 537 Mar  4 06:46 50x.html
--rw-r--r-- 1 root root 612 Mar  4 06:46 index.html
-lrwxrwxrwx 1 root root  21 Aug  6 10:50 phpmyadmin -> /usr/share/phpmyadmin
-```
+   ```php
+    total 8
+    -rw-r--r-- 1 root root 537 Mar  4 06:46 50x.html
+    -rw-r--r-- 1 root root 612 Mar  4 06:46 index.html
+    lrwxrwxrwx 1 root root  21 Aug  6 10:50 phpmyadmin -> /usr/share/phpmyadmin
+   ```
 
- - As you can see, we have a symbolic link called phpmyadmin in this directory. We can change this link name to whatever we would like. This will change the location where phpMyAdmin can be accessed from a browser, which can help obscure the access point from hard-coded bots, Choose a name that does not indicate the purpose of the location. In this guide, we will name our access location `/you_name_it`. To accomplish this, we will just rename the link:
-  - Rename the folder name : `sudo mv phpmyadmin you_name_it`
-  - And again try to list all dir to see if the actual name really renamed or not by typing : `ls -l`, and we can see the below output :
+   - As you can see, we have a symbolic link called phpmyadmin in this directory. We can change this link name to whatever we would like. This will change the location where phpMyAdmin can be accessed from a browser, which can help obscure the access point from hard-coded bots, Choose a name that does not indicate the purpose of the location. In this guide, we will name our access location `/you_name_it`. To accomplish this, we will just rename the link:
+    - Rename the folder name : `sudo mv phpmyadmin you_name_it`
+    - And again try to list all dir to see if the actual name really renamed or not by typing : `ls -l`, and we can see the below output :
   
-```php
-total 8
--rw-r--r-- 1 root root 537 Mar  4 06:46 50x.html
--rw-r--r-- 1 root root 612 Mar  4 06:46 index.html
-lrwxrwxrwx 1 root root  21 Aug  6 10:50 the_name_that_you_use_to_rename_it -> /usr/share/phpmyadmin
-```
- - Done. Now we can access the phpmyadmin by using the new name : `http://server_ip_address/the_name_that_you_use_to_rename_it`
+   ```php
+   total 8
+   -rw-r--r-- 1 root root 537 Mar  4 06:46 50x.html
+   -rw-r--r-- 1 root root 612 Mar  4 06:46 index.html
+   lrwxrwxrwx 1 root root  21 Aug  6 10:50 the_name_that_you_use_to_rename_it -> /usr/share/phpmyadmin
+   ```
+
+   - Done. Now we can access the phpmyadmin by using the new name : `http://server_ip_address/the_name_that_you_use_to_rename_it`
  
 - Second, by Setting up a Web Server Authentication Gate
  - The next feature we wanted for our installation was an authentication prompt that a user would be required to pass before ever seeing the phpMyAdmin login screen, Fortunately, most web servers, including Nginx, provide this capability natively. We will just need to modify our Nginx configuration file with the details, Before we do this, we will create a password file that will store our the authentication credentials. Nginx requires that passwords be encrypted using the crypt() function. The OpenSSL suite, which should already be installed on your server, includes this functionality,To create an encrypted password, type :
