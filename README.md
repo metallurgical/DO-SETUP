@@ -8,8 +8,7 @@
  - Use SSH client(putty) for windows or use DO console for easy access. Login as root and will asked to change new password. Fill in current password, hit enter and another prompted will showing up to enter new password. Just fill in new password and you're done 
  
 
----------------
-#### Install nginx
+![alt text](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1") Install nginx
 ------------------
 
 **1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
