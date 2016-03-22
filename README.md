@@ -1,3 +1,4 @@
+------------
 #### DO 1st Setup
 ------------
 
@@ -7,6 +8,8 @@
 **2) Change Root Password**
  - Use SSH client(putty) for windows or use DO console for easy access. Login as root and will asked to change new password. Fill in current password, hit enter and another prompted will showing up to enter new password. Just fill in new password and you're done 
  
+
+---------------
 #### Install nginx
 ------------------
 
@@ -37,6 +40,9 @@
 **6) Reference**
 -  https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts
   
+
+
+------------------
 #### Install Mysql-server
 ------------------
 **1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
@@ -70,7 +76,7 @@
 **7) Reference** :
 - https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-14-04
 
-
+------------------
 #### Install PHP5-fpm(skip this if you did't use PHP as a server side)
 ------------------
 **1) If we want to use PHP as a server side, we need to install this. We still need something to connect the nginx and mysql. Since Nginx does not contain native PHP processing like some other web servers, we will need to install php5-fpm, which stands for "fastCGI process manager". We will tell Nginx to pass PHP requests to this software for processing. We can install this module and will also grab an additional helper package that will allow PHP to communicate with our database backend. The installation will pull in the necessary PHP core files. Do this by typing:**
@@ -159,6 +165,7 @@ server {
 - https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04
 
 
+------------
 #### Install PhpMyadmin(skip this if not related)
 ------------
 **1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
@@ -260,5 +267,5 @@ server {
      - `sudo service nginx restart`
     - Finally we open the page in our browser `http://server_ip_address/the_phpmyadmin_new_folder_name_after_rename` and here we can see the Auth promp will showing up. DONE!!
     
- **7) Reference**
+**7) Reference**
  - https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-with-nginx-on-an-ubuntu-14-04-server
