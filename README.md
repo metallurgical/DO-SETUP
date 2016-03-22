@@ -218,7 +218,7 @@ lrwxrwxrwx 1 root root  21 Aug  6 10:50 the_name_that_you_use_to_rename_it -> /u
    - directly open file using any ftp to modified it.
    - Within this file, you simply need to specify the username you would like to use, followed by a colon (:), followed by the encrypted version of your password you received from the openssl passwd utility, We are going to name our user `you_name_it`. The file for this guide looks like this: 
     - `you_name_it:encrypted_password_we_copy_earlier` ---> example : `admin:artbdweckuhsdf34de`
-   - Save and close the file when you are finished., Now, we are ready to modify our Nginx configuration file. Open this file in your text editor to get started:
+  - Save and close the file when you are finished., Now, we are ready to modify our Nginx configuration file. Open this file in your text editor to get started:
     - `sudo nano /etc/nginx/sites-available/default` or open by any ftp client to modified it.
     - Within this file, we need to add a new location section. This will target the location we chose for our phpMyAdmin interface (we selected `/the_phpmyadmin_new_folder_name_after_rename` ., Create this section within the server block, but outside of any other blocks. We will put our new location block below the location / block in our example:
  
