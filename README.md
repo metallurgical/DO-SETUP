@@ -69,3 +69,18 @@
   
 **7) Reference** :
 - https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-14-04
+
+
+#### Install PHP5-fpm(skip this if you did't use PHP as a server side)
+------------------
+**1) If we want to use PHP as a server side, we need to install this. We still need something to connect the nginx and mysql. Since Nginx does not contain native PHP processing like some other web servers, we will need to install php5-fpm, which stands for "fastCGI process manager". We will tell Nginx to pass PHP requests to this software for processing. We can install this module and will also grab an additional helper package that will allow PHP to communicate with our database backend. The installation will pull in the necessary PHP core files. Do this by typing:**
+ - `sudo apt-get install php5-fpm php5-mysql`
+ 
+**2) Configure the PHP Processor, We now have our PHP components installed, but we need to make a slight configuration change to make our setup more secure. Open the main php5-fpm configuration file with root privileges:**
+ - `sudo nano /etc/php5/fpm/php.ini`
+ - What we are looking for in this file is the parameter that sets **cgi.fix_pathinfo**. This will be commented out with a semi-colon (;) and set to "1" by default. This is an extremely insecure setting because it tells PHP to attempt to execute the closest file it can find if a PHP file does not match exactly. This basically would allow users to craft PHP requests in a way that would allow them to execute scripts that they shouldn't be allowed to execute. We will change both of these conditions by uncommenting the line and setting it to "0" like this:
+  - `cgi.fix_pathinfo=0`
+  - Save and close the file when you are finished.
+
+**3) Now, we just need to restart our PHP processor by typing: **
+- `sudo service php5-fpm restart`
