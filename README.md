@@ -1,4 +1,4 @@
-#### DO-SETUP
+#### DO 1st Setup
 ------------
 
 **1) Create Droplet As Ussual**
@@ -33,3 +33,17 @@
    - `sudo service nginx restart`
   - Make sure that our web server will restart automatically when the server is rebooted by typing:
    - `sudo update-rc.d nginx defaults` hit enter and if see this message `System start/stop links for /etc/init.d/nginx already exist.`, this just means that it was already configured correctly and that no action was necessary. Either way, your Nginx service is now configured to start up at boot time.
+  
+#### Install Mysql-server
+------------------
+**1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
+ - `sudo apt-get update`
+ 
+**2) Afterwards, install mysql**
+ - `sudo apt-get install mysql-server`
+ - During installation, the package will asked for setting up password for mysql user @root. Just type in your password and proceed till it finish.
+ 
+**3) For the short version, above step is enough, but to make our database more secure, we can proceed to no 4)**
+**4) Secure the database/mysql, First, you'll want to run the included security script. This changes some of the less secure default options for things like remote root logins and sample users. Run :**
+ - `sudo mysql_secure_installation`
+ - Just type in the required and suitable answer when prompted during installation
