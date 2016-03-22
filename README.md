@@ -82,5 +82,72 @@
   - `cgi.fix_pathinfo=0`
   - Save and close the file when you are finished.
 
-**3) Now, we just need to restart our PHP processor by typing: **
+**3) Now, we just need to restart our PHP processor by typing:**
 - `sudo service php5-fpm restart`
+
+**4) Configure Nginx to Use our PHP Processor, Now, we have all of the required components installed. The only configuration change we still need to do is tell Nginx to use our PHP processor for dynamic content, We do this on the server block level (server blocks are similar to Apache's virtual hosts). Open the default Nginx server block configuration file by typing:**
+- `sudo nano /etc/nginx/sites-available/default` , this will open virtual host block set by nginx on default state. 
+- During this time, Currently, there is a lot of example with comment, and with the comments removed, the Nginx default server block file looks like this:
+
+```php 
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+
+    server_name localhost;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+change to :
+
+``` php
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    root /usr/share/nginx/html;
+    index index.php index.html index.htm;
+
+    server_name server_domain_name_or_IP;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+        root /usr/share/nginx/html;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+```
+- if you doesn't want to use nano as editor, just use FTP software like winscp or filezilla to access into server root, and find the file `/etc/nginx/sites-available/default` and edit to be like above state.
+
+**5) After that restart nginx to ensure the nginx take effect :**
+ - `sudo service nginx restart`
+ 
+**6) Testing PHP working or not, We still should test to make sure that Nginx can correctly hand .php files off to our PHP processor. We can do this by creating a test PHP file in our document root. Open a new file called info.php within your document root in your text editor:**
+- `sudo nano /usr/share/nginx/html/info.php`
+- Put this :
+``` php
+   <?php
+   phpinfo();
+   ?>
+```
+- and visit our page :
+ - `http://server_domain_name_or_IP/info.php`
