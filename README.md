@@ -157,3 +157,104 @@ server {
 
 **7) Reference**
 - https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04
+
+
+#### Install PhpMyadmin(skip this if not related)
+------------
+**1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
+ - `sudo apt-get update`
+ 
+**2) Afterwards, install phpmyadmin**
+- `sudo apt-get install phpmyadmin`
+- during this time, will asked to configure for appache or etc server, since we are using nginx as web server, just skip this process.
+- We need to provide password for phpmyadmin root access, type in your mysql root user password
+
+**3) Create symbolink(shortcut) from original location to be able to access it from nginx html/www folder :
+- `sudo ln -s /usr/share/phpmyadmin /usr/share/nginx/html` or 
+- `sudo ln -s /usr/share/phpmyadmin/ /usr/share/nginx/www`
+- it depend on where you serve html content either inside **html or www** folder
+
+**4) Testing, try to access :**
+- Restart nginx before use : `sudo service nginx restart`
+- Type in browser url : `http://server_ip_address/phpmyadmin`
+- If everything goes well, then the **Basic Setup for phpmyadmin is DONE**, if want to secure the phpmyadmin, can proceed to number **5) and forth..**
+
+**5) Since the phpmyadmin folder can be accessible from the public internet, we need to secure our database. A final item that we need to address is enabling the mcrypt PHP module, which phpMyAdmin relies on. This was installed with phpMyAdmin so we just need to toggle it on and restart our PHP processor:**
+- `sudo php5enmod mcrypt`
+- `sudo service php5-fpm restart`
+- We are done enabling mcrypt for phpmyadmin
+
+**6) Secure your phpMyAdmin Instance, The phpMyAdmin instance installed on our server should be completely usable at this point. However, by installing a web interface, we have exposed our MySQL system to the outside world., Even with the included authentication screen, this is quite a problem. Because of phpMyAdmin's popularity combined with the large amount of data it provides access to, installations like these are common targets for attackers..We will implement two simple strategies to lessen the chances of our installation being targeted and compromised. We will change the location of the interface from /phpmyadmin to something else to sidestep some of the automated bot brute-force attempts. We will also create an additional, web server-level authentication gateway that must be passed before even getting to the phpMyAdmin login screen.**
+- By Changing the Application's Access Location
+ - In order for our Nginx web server to find and serve our phpMyAdmin files, we created a symbolic link from the phpMyAdmin directory to our document root in an earlier step. To change the URL where our phpMyAdmin interface can be accessed, we simply need to rename the symbolic link. Move into the Nginx document root directory to get a better idea of what we are doing:
+  - Go to our site dir : `cd /usr/share/nginx/html`
+  - Listing all the file with privilege shown : `ls -l ` and we can see below output from console :
+  
+```php
+total 8
+-rw-r--r-- 1 root root 537 Mar  4 06:46 50x.html
+-rw-r--r-- 1 root root 612 Mar  4 06:46 index.html
+lrwxrwxrwx 1 root root  21 Aug  6 10:50 phpmyadmin -> /usr/share/phpmyadmin
+```
+
+ - As you can see, we have a symbolic link called phpmyadmin in this directory. We can change this link name to whatever we would like. This will change the location where phpMyAdmin can be accessed from a browser, which can help obscure the access point from hard-coded bots, Choose a name that does not indicate the purpose of the location. In this guide, we will name our access location `/you_name_it`. To accomplish this, we will just rename the link:
+  - Rename the folder name : `sudo mv phpmyadmin you_name_it`
+  - And again try to list all dir to see if the actual name really renamed or not by typing : `ls -l`, and we can see the below output :
+  
+```php
+total 8
+-rw-r--r-- 1 root root 537 Mar  4 06:46 50x.html
+-rw-r--r-- 1 root root 612 Mar  4 06:46 index.html
+lrwxrwxrwx 1 root root  21 Aug  6 10:50 the_name_that_you_use_to_rename_it -> /usr/share/phpmyadmin
+```
+ - Done. Now we can access the phpmyadmin by using the new name : `http://server_ip_address/the_name_that_you_use_to_rename_it`
+ 
+- Second, by Setting up a Web Server Authentication Gate
+ - The next feature we wanted for our installation was an authentication prompt that a user would be required to pass before ever seeing the phpMyAdmin login screen, Fortunately, most web servers, including Nginx, provide this capability natively. We will just need to modify our Nginx configuration file with the details, Before we do this, we will create a password file that will store our the authentication credentials. Nginx requires that passwords be encrypted using the crypt() function. The OpenSSL suite, which should already be installed on your server, includes this functionality,To create an encrypted password, type :
+  - `openssl passwd`
+  - Type password for auth
+  - after finish, the new encrypted password will created like `artbdweckuhsdf34de` and copy those and paste into any editor as you will need to paste it into the authentication file we will be creating, Now, create an authentication file. We will call this file pma_pass and place it in the Nginx configuration directory:
+   - `sudo nano /etc/nginx/pma_pass` use nano or
+   - directly open file using any ftp to modified it.
+   - Within this file, you simply need to specify the username you would like to use, followed by a colon (:), followed by the encrypted version of your password you received from the openssl passwd utility, We are going to name our user `you_name_it`. The file for this guide looks like this: 
+    - `you_name_it:encrypted_password_we_copy_earlier` ---> example : `admin:artbdweckuhsdf34de`
+   - Save and close the file when you are finished., Now, we are ready to modify our Nginx configuration file. Open this file in your text editor to get started:
+    - `sudo nano /etc/nginx/sites-available/default` or open by any ftp client to modified it.
+    - Within this file, we need to add a new location section. This will target the location we chose for our phpMyAdmin interface (we selected `/the_phpmyadmin_new_folder_name_after_rename` ., Create this section within the server block, but outside of any other blocks. We will put our new location block below the location / block in our example:
+ 
+```php
+server {
+    . . .
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /the_phpmyadmin_new_folder_name_after_rename {
+    }
+
+    . . .
+}
+```
+   - Within this block, we need to set the value of a directive called auth_basic to an authentication message that our prompt will display to users. We do not want to indicate to unauthenticated users what we are protecting, so do not give specific details. We will just use "Admin Login" in our example., We then need to use a directive called auth_basic_user_file to point our web server to the authentication file that we created. Nginx will prompt the user for authentication details and check that the inputted values match what it finds in the specified file., After we are finished, the file should look like this:
+ 
+```php
+server {
+    . . .
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /the_phpmyadmin_new_folder_name_after_rename {
+        auth_basic "Admin Login";
+        auth_basic_user_file /etc/nginx/pma_pass;
+    }
+   
+
+    . . .
+}
+```
+   - Save and close the file when you are finished., To implement our new authentication gate, we must restart the web server:
+    - `sudo service nginx restart`
+   - Finally we open the page in our browser `http://server_ip_address/the_phpmyadmin_new_folder_name_after_rename` and here we can see the Auth promp will showing up. DONE!!
