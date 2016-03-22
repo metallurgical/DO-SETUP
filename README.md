@@ -1,4 +1,4 @@
-![alt text](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1")  DO Inital Setup
+![alt text][logo_main]  DO Inital Setup
 ------------
 
 **1) Create Droplet As Ussual**
@@ -8,7 +8,7 @@
  - Use SSH client(putty) for windows or use DO console for easy access. Login as root and will asked to change new password. Fill in current password, hit enter and another prompted will showing up to enter new password. Just fill in new password and you're done 
  
 
-![alt text](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1") Install nginx
+![alt text][logo_main] Install nginx
 ------------------
 
 **1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
@@ -39,7 +39,7 @@
 -  https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts
   
 
-![alt text](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1") Install Mysql-server
+![alt text][logo_main] Install Mysql-server
 ------------------
 **1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
  - `sudo apt-get update`
@@ -72,7 +72,7 @@
 **7) Reference** :
 - https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-14-04
 
-![alt text](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1") Install PHP5-fpm(skip this if you did't use PHP as a server side)
+![alt text][logo_main] Install PHP5-fpm(skip this if you did't use PHP as a server side)
 ------------------
 **1) If we want to use PHP as a server side, we need to install this. We still need something to connect the nginx and mysql. Since Nginx does not contain native PHP processing like some other web servers, we will need to install php5-fpm, which stands for "fastCGI process manager". We will tell Nginx to pass PHP requests to this software for processing. We can install this module and will also grab an additional helper package that will allow PHP to communicate with our database backend. The installation will pull in the necessary PHP core files. Do this by typing:**
  - `sudo apt-get install php5-fpm php5-mysql`
@@ -160,7 +160,7 @@ server {
 - https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04
 
 
-![alt text](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1") Install PhpMyadmin(skip this if not related)
+![alt text][logo_main] Install PhpMyadmin(skip this if not related)
 ------------
 **1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
  - `sudo apt-get update`
@@ -186,7 +186,7 @@ server {
 - We are done enabling mcrypt for phpmyadmin
 
 **6) Secure your phpMyAdmin Instance, The phpMyAdmin instance installed on our server should be completely usable at this point. However, by installing a web interface, we have exposed our MySQL system to the outside world., Even with the included authentication screen, this is quite a problem. Because of phpMyAdmin's popularity combined with the large amount of data it provides access to, installations like these are common targets for attackers..We will implement two simple strategies to lessen the chances of our installation being targeted and compromised. We will change the location of the interface from /phpmyadmin to something else to sidestep some of the automated bot brute-force attempts. We will also create an additional, web server-level authentication gateway that must be passed before even getting to the phpMyAdmin login screen.**
-- ![alt text](https://www.cannastaff.com/include/themes/nasthon1001-restyle/images/delicious.gif "Logo Title Text 1") By Changing the Application's Access Location
+- ![alt text][logo_sub] By Changing the Application's Access Location
  - In order for our Nginx web server to find and serve our phpMyAdmin files, we created a symbolic link from the phpMyAdmin directory to our document root in an earlier step. To change the URL where our phpMyAdmin interface can be accessed, we simply need to rename the symbolic link. Move into the Nginx document root directory to get a better idea of what we are doing:
   - Go to our site dir : `cd /usr/share/nginx/html`
   - Listing all the file with privilege shown : `ls -l ` and we can see below output from console :
@@ -211,7 +211,7 @@ server {
 
    - Done. Now we can access the phpmyadmin by using the new name : `http://server_ip_address/the_name_that_you_use_to_rename_it`
  
-- ![alt text](https://www.cannastaff.com/include/themes/nasthon1001-restyle/images/delicious.gif "Logo Title Text 1") Second, by Setting up a Web Server Authentication Gate
+- ![alt text][logo_sub] Second, by Setting up a Web Server Authentication Gate
  - The next feature we wanted for our installation was an authentication prompt that a user would be required to pass before ever seeing the phpMyAdmin login screen, Fortunately, most web servers, including Nginx, provide this capability natively. We will just need to modify our Nginx configuration file with the details, Before we do this, we will create a password file that will store our the authentication credentials. Nginx requires that passwords be encrypted using the crypt() function. The OpenSSL suite, which should already be installed on your server, includes this functionality,To create an encrypted password, type :
   - `openssl passwd`
   - Type password for auth
@@ -263,3 +263,7 @@ server {
     
 **7) Reference**
  - https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-with-nginx-on-an-ubuntu-14-04-server
+ 
+
+[logo_main]: https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1"
+[logo_sub]: https://www.cannastaff.com/include/themes/nasthon1001-restyle/images/delicious.gif "Logo Title Text 2"
