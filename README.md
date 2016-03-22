@@ -1,4 +1,5 @@
-### DO-SETUP
+#### DO-SETUP
+------------
 
 **1) Create Droplet As Ussual**
  - After creating droplet is finished in DO, the root password with droplet IP address will sent to an email address. For the first time login, the root access required to change the password
@@ -7,6 +8,8 @@
  - Use SSH client(putty) for windows or use DO console for easy access. Login as root and will asked to change new password. Fill in current password, hit enter and another prompted will showing up to enter new password. Just fill in new password and you're done 
  
 #### Install nginx
+------------------
+
 **1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
  - `sudo apt-get update`
  
