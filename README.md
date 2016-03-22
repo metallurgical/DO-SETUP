@@ -19,3 +19,14 @@
  
 **4) Copy the Ip, and paste into browser and see the Nginx Welcome Message**
  - `http://ip_address_step_3`
+ - If the installation running well, should see **nginx welcome message**
+ 
+**5) After all of these done, we can use the basic command to play with nginx :**
+  - Stop nginx
+   - `sudo service nginx stop`
+  - Start nginx
+   - `sudo service nginx start`
+  - Restart nginx
+   - `sudo service nginx restart`
+  - Make sure that our web server will restart automatically when the server is rebooted by typing:
+   - `sudo update-rc.d nginx defaults` hit enter and if see this message `System start/stop links for /etc/init.d/nginx already exist.`, this just means that it was already configured correctly and that no action was necessary. Either way, your Nginx service is now configured to start up at boot time.
