@@ -223,39 +223,39 @@ server {
     - `sudo nano /etc/nginx/sites-available/default` or open by any ftp client to modified it.
     - Within this file, we need to add a new location section. This will target the location we chose for our phpMyAdmin interface (we selected `/the_phpmyadmin_new_folder_name_after_rename` ., Create this section within the server block, but outside of any other blocks. We will put our new location block below the location / block in our example:
  
-```php
-server {
-    . . .
+     ```php
+      server {
+        . . .
 
-    location / {
-        try_files $uri $uri/ =404;
-    }
+        location / {
+          try_files $uri $uri/ =404;
+        }
 
-    location /the_phpmyadmin_new_folder_name_after_rename {
-    }
+        location /the_phpmyadmin_new_folder_name_after_rename {
+        }
 
-    . . .
-}
-```
-   - Within this block, we need to set the value of a directive called auth_basic to an authentication message that our prompt will display to users. We do not want to indicate to unauthenticated users what we are protecting, so do not give specific details. We will just use "Admin Login" in our example., We then need to use a directive called auth_basic_user_file to point our web server to the authentication file that we created. Nginx will prompt the user for authentication details and check that the inputted values match what it finds in the specified file., After we are finished, the file should look like this:
+        . . .
+     }
+    ```
+    - Within this block, we need to set the value of a directive called auth_basic to an authentication message that our prompt will display to users. We do not want to indicate to unauthenticated users what we are protecting, so do not give specific details. We will just use "Admin Login" in our example., We then need to use a directive called auth_basic_user_file to point our web server to the authentication file that we created. Nginx will prompt the user for authentication details and check that the inputted values match what it finds in the specified file., After we are finished, the file should look like this:
  
-```php
-server {
-    . . .
+    ```php
+      server {
+        . . .
 
-    location / {
-        try_files $uri $uri/ =404;
-    }
+        location / {
+           try_files $uri $uri/ =404;
+        }
 
-    location /the_phpmyadmin_new_folder_name_after_rename {
-        auth_basic "Admin Login";
-        auth_basic_user_file /etc/nginx/pma_pass;
-    }
+        location /the_phpmyadmin_new_folder_name_after_rename {
+           auth_basic "Admin Login";
+           auth_basic_user_file /etc/nginx/pma_pass;
+        }
    
 
-    . . .
-}
-```
-   - Save and close the file when you are finished., To implement our new authentication gate, we must restart the web server:
-    - `sudo service nginx restart`
-   - Finally we open the page in our browser `http://server_ip_address/the_phpmyadmin_new_folder_name_after_rename` and here we can see the Auth promp will showing up. DONE!!
+      . . .
+     }
+   ```
+    - Save and close the file when you are finished., To implement our new authentication gate, we must restart the web server:
+     - `sudo service nginx restart`
+    - Finally we open the page in our browser `http://server_ip_address/the_phpmyadmin_new_folder_name_after_rename` and here we can see the Auth promp will showing up. DONE!!
