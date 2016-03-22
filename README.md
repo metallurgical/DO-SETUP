@@ -1,6 +1,4 @@
 ### DO-SETUP
-===========
-
 
 **1) Create Droplet As Ussual**
  - After creating droplet is finished in DO, the root password with droplet IP address will sent to an email address. For the first time login, the root access required to change the password
