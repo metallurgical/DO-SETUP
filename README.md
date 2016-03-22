@@ -1,4 +1,3 @@
-------------
 ![alt text](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1")  DO Inital Setup
 ------------
 
