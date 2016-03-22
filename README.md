@@ -33,6 +33,9 @@
    - `sudo service nginx restart`
   - Make sure that our web server will restart automatically when the server is rebooted by typing:
    - `sudo update-rc.d nginx defaults` hit enter and if see this message `System start/stop links for /etc/init.d/nginx already exist.`, this just means that it was already configured correctly and that no action was necessary. Either way, your Nginx service is now configured to start up at boot time.
+   
+**6) Reference**
+-  https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts
   
 #### Install Mysql-server
 ------------------
@@ -63,3 +66,6 @@
   - `mysqld --initialize instead`
   - However, if you installed version 5.7 from the Debian distribution, like in step one, the data directory was initialized automatically, so you don't have to do anything. If you try running the command anyway, you'll see the following error:
    - `[ERROR] --initialize specified but the data directory has files in it. Aborting.`
+  
+**7) Reference** :
+- https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-14-04
