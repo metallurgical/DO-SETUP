@@ -259,3 +259,6 @@ server {
     - Save and close the file when you are finished., To implement our new authentication gate, we must restart the web server:
      - `sudo service nginx restart`
     - Finally we open the page in our browser `http://server_ip_address/the_phpmyadmin_new_folder_name_after_rename` and here we can see the Auth promp will showing up. DONE!!
+    
+ **7) Reference**
+ - https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-with-nginx-on-an-ubuntu-14-04-server
