@@ -44,6 +44,7 @@
  - During installation, the package will asked for setting up password for mysql user @root. Just type in your password and proceed till it finish.
  
 **3) For the short version, above step is enough, but to make our database more secure, we can proceed to no 4)**
+
 **4) Secure the database/mysql, First, you'll want to run the included security script. This changes some of the less secure default options for things like remote root logins and sample users. Run :**
  - `sudo mysql_secure_installation`
  - Just type in the required and suitable answer when prompted during installation
