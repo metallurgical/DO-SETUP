@@ -48,3 +48,18 @@
 **4) Secure the database/mysql, First, you'll want to run the included security script. This changes some of the less secure default options for things like remote root logins and sample users. Run :**
  - `sudo mysql_secure_installation`
  - Just type in the required and suitable answer when prompted during installation
+ 
+**5) If the installation process running well, type in :**
+ - `mysql --version`
+ - and should see something like this 
+  - `mysql  Ver 14.14 Distrib 5.5.47, for debian-linux-gnu (x86_64) using readline 6.3`
+  
+**6) If you're using a version of MySQL earlier than 5.7.6, you should initialize the data directory by running**
+ - `sudo mysql_install_db`
+ - In MySQL 5.6, you might get an error that says **FATAL ERROR: Could not find my-default.cnf.** If you do, copy the **/usr/share/my.cnf** configuration file into the location that **mysql_install_db** expects, then rerun it. :
+  - `sudo cp /etc/mysql/my.cnf /usr/share/mysql/my-default.cnf` copy
+  - `sudo mysql_install_db` and rerun
+ - The **mysql_install_db** command is deprecated as of MySQL 5.7.6. If you're using version 5.7.6 or later, you should use:
+  - `mysqld --initialize instead`
+  - However, if you installed version 5.7 from the Debian distribution, like in step one, the data directory was initialized automatically, so you don't have to do anything. If you try running the command anyway, you'll see the following error:
+   - `[ERROR] --initialize specified but the data directory has files in it. Aborting.`
