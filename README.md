@@ -186,7 +186,7 @@ server {
 - We are done enabling mcrypt for phpmyadmin
 
 **6) Secure your phpMyAdmin Instance, The phpMyAdmin instance installed on our server should be completely usable at this point. However, by installing a web interface, we have exposed our MySQL system to the outside world., Even with the included authentication screen, this is quite a problem. Because of phpMyAdmin's popularity combined with the large amount of data it provides access to, installations like these are common targets for attackers..We will implement two simple strategies to lessen the chances of our installation being targeted and compromised. We will change the location of the interface from /phpmyadmin to something else to sidestep some of the automated bot brute-force attempts. We will also create an additional, web server-level authentication gateway that must be passed before even getting to the phpMyAdmin login screen.**
-- By Changing the Application's Access Location
+- ![alt text](https://www.cannastaff.com/include/themes/nasthon1001-restyle/images/delicious.gif "Logo Title Text 1") By Changing the Application's Access Location
  - In order for our Nginx web server to find and serve our phpMyAdmin files, we created a symbolic link from the phpMyAdmin directory to our document root in an earlier step. To change the URL where our phpMyAdmin interface can be accessed, we simply need to rename the symbolic link. Move into the Nginx document root directory to get a better idea of what we are doing:
   - Go to our site dir : `cd /usr/share/nginx/html`
   - Listing all the file with privilege shown : `ls -l ` and we can see below output from console :
@@ -211,7 +211,7 @@ server {
 
    - Done. Now we can access the phpmyadmin by using the new name : `http://server_ip_address/the_name_that_you_use_to_rename_it`
  
-- Second, by Setting up a Web Server Authentication Gate
+- ![alt text](https://www.cannastaff.com/include/themes/nasthon1001-restyle/images/delicious.gif "Logo Title Text 1") Second, by Setting up a Web Server Authentication Gate
  - The next feature we wanted for our installation was an authentication prompt that a user would be required to pass before ever seeing the phpMyAdmin login screen, Fortunately, most web servers, including Nginx, provide this capability natively. We will just need to modify our Nginx configuration file with the details, Before we do this, we will create a password file that will store our the authentication credentials. Nginx requires that passwords be encrypted using the crypt() function. The OpenSSL suite, which should already be installed on your server, includes this functionality,To create an encrypted password, type :
   - `openssl passwd`
   - Type password for auth
