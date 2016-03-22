@@ -39,9 +39,7 @@
 -  https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts
   
 
-
-------------------
-#### Install Mysql-server
+![alt text](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1") Install Mysql-server
 ------------------
 **1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
  - `sudo apt-get update`
@@ -74,8 +72,7 @@
 **7) Reference** :
 - https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-14-04
 
-------------------
-#### Install PHP5-fpm(skip this if you did't use PHP as a server side)
+![alt text](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1") Install PHP5-fpm(skip this if you did't use PHP as a server side)
 ------------------
 **1) If we want to use PHP as a server side, we need to install this. We still need something to connect the nginx and mysql. Since Nginx does not contain native PHP processing like some other web servers, we will need to install php5-fpm, which stands for "fastCGI process manager". We will tell Nginx to pass PHP requests to this software for processing. We can install this module and will also grab an additional helper package that will allow PHP to communicate with our database backend. The installation will pull in the necessary PHP core files. Do this by typing:**
  - `sudo apt-get install php5-fpm php5-mysql`
@@ -163,8 +160,7 @@ server {
 - https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04
 
 
-------------
-#### Install PhpMyadmin(skip this if not related)
+![alt text](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcST9v8A3x54BSoD9ipEB2i_QLTkh7OCY6VK_sGI_THbAH2IY0G1 "Logo Title Text 1") Install PhpMyadmin(skip this if not related)
 ------------
 **1) Run this command to update our local package index before we begin so that we are using the most up-to-date information**
  - `sudo apt-get update`
