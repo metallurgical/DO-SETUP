@@ -173,7 +173,7 @@ server {
 - during this time, will asked to configure for appache or etc server, since we are using nginx as web server, just skip this process.
 - We need to provide password for phpmyadmin root access, type in your mysql root user password
 
-**3) Create symbolink(shortcut) from original location to be able to access it from nginx html/www folder :
+**3) Create symbolink(shortcut) from original location to be able to access it from nginx html/www folder :**
 - `sudo ln -s /usr/share/phpmyadmin /usr/share/nginx/html` or 
 - `sudo ln -s /usr/share/phpmyadmin/ /usr/share/nginx/www`
 - it depend on where you serve html content either inside **html or www** folder
