@@ -121,6 +121,9 @@ server {
     server_name server_domain_name_or_IP;
 
     location / {
+        # turn this on if below code did't work for CodeIgniter Framework
+        # and comment previous code
+        # try_files $uri $uri/ /index.php?$args;
         try_files $uri $uri/ =404;
     }
 
