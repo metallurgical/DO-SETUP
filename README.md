@@ -271,5 +271,10 @@ server {
  - https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-with-nginx-on-an-ubuntu-14-04-server
  
 
+![alt text][logo_main]  Add host into DO
+------------
+- https://www.digitalocean.com/community/tutorials/how-to-set-up-a-host-name-with-digitalocean
+ 
+
 
 
