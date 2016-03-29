@@ -274,6 +274,22 @@ server {
 ![alt text][logo_main]  Add host into DO
 ------------
 - https://www.digitalocean.com/community/tutorials/how-to-set-up-a-host-name-with-digitalocean
+
+
+![alt text][logo_main]  Install linux PostFix(sendmail) - If working with receiving & sending Mail over SMTP or Internet Site
+------------
+If we're are working on default linux Os configuration that setting it up from a scracth like a Cloud Hosting, it might not come with pre-installed postfix(sendmail). As a result, when we are trying to sending or receiving an email from our apps, the error comes out with message `Unable to send email using PHP mail(). Your server might not be 
+configured to send mail using this method` . So, if any of you ever encountered this, you need to install `postfix(sendmail)` package from terminal otherwise use 3rd party mail service such as Mandrill. Now let's move on :
+
+**1) Update Package**
+- `sudo apt-get update`
+
+**2) Install postfix**
+- `sudo apt-get install postfix`
+- During this time, a prompt will poped out from terminal. The prompt asked about configuration that need to set up. For easy installation, just setup it with **Default Setting** without chosing any options(Advanced User may use this)
+
+**3) Postfix Path**
+- You can modified previous setting by setting up from the .cf file. Default path is : `/etc/postfix/main.cf`
  
 
 
