@@ -88,6 +88,7 @@
 
 **3) Now, we just need to restart our PHP processor by typing:**
 - `sudo service php5-fpm restart`
+- But if the **unknown instance** issue appears, you can just kill the processes and have the service restarted, using this line `sudo pkill php5-fpm; sudo service php5-fpm start`
 
 **4) Configure Nginx to Use our PHP Processor, Now, we have all of the required components installed. The only configuration change we still need to do is tell Nginx to use our PHP processor for dynamic content, We do this on the server block level (server blocks are similar to Apache's virtual hosts). Open the default Nginx server block configuration file by typing:**
 - `sudo nano /etc/nginx/sites-available/default` , this will open virtual host block set by nginx on default state. 
