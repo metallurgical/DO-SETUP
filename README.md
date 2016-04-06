@@ -10,6 +10,9 @@
 **2) Change Root Password**
  - Use SSH client(putty) for windows or use DO console for easy access. Login as root and will asked to change new password. Fill in current password, hit enter and another prompted will showing up to enter new password. Just fill in new password and you're done 
  
+**3) (optional) If message appear on terminal with message like "unable to resolve host <droplet's name>", this happen because you rename droplet's name using DO control panel, then you should update the latest name you using by editing file in `/etc/host` and add follwoing code :**
+   - `127.0.0.1    <your droplet's name>`
+ 
 
 ![alt text][logo_main] Install nginx
 ------------------
@@ -37,6 +40,7 @@
    - `sudo service nginx restart`
   - Make sure that our web server will restart automatically when the server is rebooted by typing:
    - `sudo update-rc.d nginx defaults` hit enter and if see this message `System start/stop links for /etc/init.d/nginx already exist.`, this just means that it was already configured correctly and that no action was necessary. Either way, your Nginx service is now configured to start up at boot time.
+  
    
 **6) Reference**
 -  https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts
