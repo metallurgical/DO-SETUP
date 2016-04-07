@@ -332,4 +332,10 @@ configured to send mail using this method` . So, if any of you ever encountered 
    - Finish Installation.
  - Open the application and connect to host by entering the value of `Host(127.0.0.1 - for local), port(6379 - ussually), name(any name)` and we're done.
 
+**3) References**
+ - (linux) Redis Server - Redis Official Site : http://redis/io
+ - (window) Redis Server : https://github.com/rgl/redis/downloads
+ - Redis Desktop Manager : http://redisdesktop.com/download
+ - Predis(Client Side PHP for redis) : https://github.com/rgl/redis
+ - Code reference for Predis : https://scotch.io/tutorials/getting-started-with-redis-in-php
 
