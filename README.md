@@ -295,7 +295,36 @@ configured to send mail using this method` . So, if any of you ever encountered 
 
 **3) Postfix Path**
 - You can modified previous setting by setting up from the .cf file. Default path is : `/etc/postfix/main.cf`
- 
 
+
+![alt text][logo_main]  Install Redis(In memory caching server - skip if not related)
+------------
+**1) Download Redis**
+ - (Windows Users) Download from here `https://github.com/rgl/redis/downloads` or `http://ruilopes.com/redis-setup/` as redis did't provided installation for window user. After download, just install `.exe` application and run the server by open the `redis-server.exe` command line. Done for windows.
+ - (Linux Users) Download from here `http://redis.io/download` or just download directly using terminal :
+  - `sudo wget http://download.redis.io/releases/redis-3.0.7.tar.gz`
+ - After download extract those file using gzip compression and tar collection:
+  - `tar xzf redis-3.0.7.tar.gz(name of the file)`
+ - Go into extracted folder and compile the source by typing:
+  - `make`
+ - After completed compiling process, the compiled folder will created by the name of **src**.
+ - Go to `src` folder and run the server by typing :
+  - `redis-server`
+  - If you are on src folder already run this command instead : `./redis-server`
+ - Installation Finish and the server should be running right now and waiting for client to connect!
+ - After that, we need to communicate from our code with redis server, then we need a ready made package/library from existed repository made by someone by cloning git repository(INSTALL PREDIS A REDIS CLIENT FOR **PHP**).
+  - Clone the repo into working development folder.
+  - `git clone git://github.com/nrk/predis.git`
+  - After all of this we're done installing redis and client code.
+  - All the available client code can be refer from this site : `https://scotch.io/tutorials/getting-started-with-redis-in-php`
+ 
+**2) Manage/Display redis key-value by using Dekstop Redis Manager(Only for Desktop User for developement purpose)**
+ - Download from here `http://redisdesktop.com/download`, most OSes are supported include (Linux, Mac OS, Windows)
+ - For windows, just download `.exe` and run installation.
+ - For linux user, download `debian(.deb)` package.
+  - After finish download, run the package by typing :
+   - `dpkg -i(stand for download) redis-desktop-manager_0.8.3-120_amd64.deb(depend on the package name)`
+   - Finish Installation.
+ - Open the application and connect to host by entering the value of `Host(127.0.0.1 - for local), port(6379 - ussually), name(any name)` and we're done.
 
 
