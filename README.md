@@ -300,9 +300,14 @@ configured to send mail using this method` . So, if any of you ever encountered 
 ![alt text][logo_main]  Install Redis(In memory caching server - skip if not related)
 ------------
 **1) Download Redis**
- - (Windows Users) Download from here `https://github.com/rgl/redis/downloads` or `http://ruilopes.com/redis-setup/` as redis did't provided installation for window user. After download, just install `.exe` application and run the server by open the `redis-server.exe` command line. Done for windows.
- - (Linux Users) Download from here `http://redis.io/download` or just download directly using terminal :
-  - `sudo wget http://download.redis.io/releases/redis-3.0.7.tar.gz`
+ - (Windows Users) Download from here :
+  - `https://github.com/rgl/redis/downloads` 
+  - or `http://ruilopes.com/redis-setup/` 
+ - as redis did't provided installation for window user. After download, just install `.exe` application and run the server by open the `redis-server.exe` command line. Done for windows.
+ - (Linux Users) Download from here :
+  - `http://redis.io/download` 
+  - or just download directly using terminal :
+   - `sudo wget http://download.redis.io/releases/redis-3.0.7.tar.gz`
  - After download extract those file using gzip compression and tar collection:
   - `tar xzf redis-3.0.7.tar.gz(name of the file)`
  - Go into extracted folder and compile the source by typing:
