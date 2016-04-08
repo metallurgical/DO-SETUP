@@ -340,3 +340,15 @@ configured to send mail using this method` . So, if any of you ever encountered 
  - Predis(Client Side PHP for redis - more stable) : https://github.com/nrk/predis
  - Code reference for Predis : https://scotch.io/tutorials/getting-started-with-redis-in-php
 
+![alt text][logo_main]  CORS(Cross Origin Request) Use this for development cross origin request
+------------
+**1) (Linux) **
+ - Open the crome directly from terminal :
+  - Chrome - `google-chrome --disable-web-security` or `google-chrome --disable-web-security --user-data-dir`
+  - Chromium - `chromium-browser --disable-web-security`
+  
+**2) (OS X)**
+ - Type on terminal : `open -a Google\ Chrome --args --disable-web-security`
+  
+**3) (Windows)**
+ - Make a shortcut of `chrome.exe, right click > properties > and add --disable-web-security`
