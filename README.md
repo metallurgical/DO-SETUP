@@ -342,7 +342,7 @@ configured to send mail using this method` . So, if any of you ever encountered 
 
 ![alt text][logo_main]  CORS(Cross Origin Request) Use this for development cross origin request
 ------------
-**1) (Linux) **
+**1) (Linux)**
  - Open the crome directly from terminal :
   - Chrome - `google-chrome --disable-web-security` or `google-chrome --disable-web-security --user-data-dir`
   - Chromium - `chromium-browser --disable-web-security`
