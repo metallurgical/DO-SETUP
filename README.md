@@ -344,8 +344,8 @@ configured to send mail using this method` . So, if any of you ever encountered 
 ------------
 **1) (Linux)**
  - Open the crome directly from terminal :
-  - Chrome - `google-chrome --disable-web-security` or `google-chrome --disable-web-security --user-data-dir`
-  - Chromium - `chromium-browser --disable-web-security`
+  - Chrome :- `google-chrome --disable-web-security` or `google-chrome --disable-web-security --user-data-dir`
+  - Chromium :- `chromium-browser --disable-web-security`
   
 **2) (OS X)**
  - Type on terminal : `open -a Google\ Chrome --args --disable-web-security`
