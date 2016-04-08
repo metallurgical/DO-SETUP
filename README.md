@@ -337,5 +337,6 @@ configured to send mail using this method` . So, if any of you ever encountered 
  - (window) Redis Server : https://github.com/rgl/redis/downloads
  - Redis Desktop Manager : http://redisdesktop.com/download
  - Predis(Client Side PHP for redis) : https://github.com/rgl/redis
+ - Predis(Client Side PHP for redis - more stable) : https://github.com/nrk/predis
  - Code reference for Predis : https://scotch.io/tutorials/getting-started-with-redis-in-php
 
