@@ -301,6 +301,7 @@ configured to send mail using this method` . So, if any of you ever encountered 
 ------------
 **1) Download Redis**
  - (Windows Users) Download from here :
+  - `http://github.com/MSOpenTech/redis/releases`
   - `https://github.com/rgl/redis/downloads` 
   - or `http://ruilopes.com/redis-setup/` 
  - as redis did't provided installation for window user. After download, just install `.exe` application and run the server by open the `redis-server.exe` command line. Done for windows.
